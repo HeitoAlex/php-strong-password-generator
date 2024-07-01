@@ -27,20 +27,19 @@ session_start();
 
 $attemptedLogin = false;
 
-$inputUsername = $_POST["username"];
-$inputPassword = $_POST["password"];
-
 if (isset($_SESSION["Logged"]) && $_SESSION["Logged"] === true){
     header("location: ./index.php");
 }
 
-if (isset ($inputUsername) && isset ($inputPassword)){
+if (isset ($_POST["username"]) && isset ($_POST["password"])){
+    $inputUsername = $_POST["username"];
+    $inputPassword = $_POST["password"];
     
     foreach ($accounts as $account){
         
-        if ($user["username"] === $inputUsername){
+        if ($account["username"] === $inputUsername){
 
-            if ($user["password"] === $inputPassword){
+            if ($account["password"] === $inputPassword){
 
                 $_SESSION["username"] = $inputUsername;
                 $_SESSION["password"] = $inputPassword;
