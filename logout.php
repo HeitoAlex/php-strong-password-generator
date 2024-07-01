@@ -1,7 +1,10 @@
 <?php 
 session_start();
 
-session_unset();
+if (isset($_SESSION["Logged"]) && $_SESSION["Logged"] === true){
+    
+    session_unset();
+    header('location: ./login.php');
+}
 
-header('location: ./login.php');
 ?>
